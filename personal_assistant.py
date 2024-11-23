@@ -2,6 +2,32 @@ import csv
 import pandas as pd
 
 
+class Note:
+    def __init__(self):
+        pass
+
+
+class Task:
+    def __init__(self):
+        pass
+
+
+class Contact:
+    def __init__(self):
+        pass
+
+
+class FinanceRecord:
+    def __init__(self):
+        pass
+
+
+class Calculator:
+    def __init__(self):
+        pass
+
+
+
 def main():
     print("""Добро пожаловать в Персональный помощник!
 Выберите действие:
@@ -12,6 +38,7 @@ def main():
 5. Калькулятор
 6. Выход""")
     choice = int(input("Выберите действие:"))
+
 
 
 if __name__ == "__main__":
