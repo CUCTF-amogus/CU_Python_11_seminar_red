@@ -1,3 +1,5 @@
+import messages
+
 import csv
 import pandas as pd
 
@@ -29,16 +31,8 @@ class Calculator:
 
 
 def main():
-    print("""Добро пожаловать в Персональный помощник!
-Выберите действие:
-1. Управление заметками
-2. Управление задачами
-3. Управление контактами
-4. Управление финансовыми записями
-5. Калькулятор
-6. Выход""")
-    choice = int(input("Выберите действие:"))
-
+    print(messages.start_message)
+    choice = int(input(messages.choose_message))
 
 
 if __name__ == "__main__":
