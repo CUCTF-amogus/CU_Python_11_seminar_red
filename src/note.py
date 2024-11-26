@@ -1,7 +1,8 @@
-import messages
+from config import messages
 
 from datetime import datetime
 from pprint import pprint
+
 
 class Note:
     def __init__(self):
@@ -25,9 +26,9 @@ class Note:
             func = self.func_choice[choice]
 
     def create_note(self):
-        id = int(input("Введите id новой заметки"))
-        title = input(f"Введите title новой заметки")
-        content = input(f"Введите content новой заметки")
+        id = int(input("Введите id новой заметки: "))
+        title = input(f"Введите title новой заметки: ")
+        content = input(f"Введите content новой заметки: ")
         timestamp = datetime.now()
 
         self.notes[id] = {
@@ -59,3 +60,15 @@ class Note:
     def export_csv(self):
         # load to the file
         pass
+
+
+def test():
+    note = Note()
+
+    note.create_note()
+    # 123
+    # amogus
+    # sussus
+    print(note.get_notes())
+    print("==============")
+    note.list_notes()

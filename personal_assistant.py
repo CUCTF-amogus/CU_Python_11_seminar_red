@@ -1,4 +1,4 @@
-import messages
+from config import messages
 from src import *
 
 
@@ -27,5 +27,9 @@ def main():
         func = func_choice[choice]
         func()
 
+
 if __name__ == "__main__":
-    main()
+    # main()
+    from src.note import test
+
+    test()

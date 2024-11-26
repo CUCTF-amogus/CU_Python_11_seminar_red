@@ -1,4 +1,4 @@
-import messages
+from config import messages
 
 
 class Calculator:
