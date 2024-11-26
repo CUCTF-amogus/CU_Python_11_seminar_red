@@ -27,6 +27,16 @@ class Note:
 
     def create_note(self):
         id = int(input("Введите id новой заметки: "))
+        if id in self.get_notes().keys():
+            print(f"Запись с id - {id} уже существует")
+            return
+        
+        self.update_note(id, )
+
+    def get_notes(self):
+        return self.notes
+
+    def update_note(self, id):
         title = input(f"Введите title новой заметки: ")
         content = input(f"Введите content новой заметки: ")
         timestamp = datetime.now()
@@ -38,15 +48,13 @@ class Note:
             "timestamp": timestamp,
         }
 
-    def get_notes(self):
-        return self.notes
-
     def list_notes(self):
         for index, note in self.get_notes().items():
             print(f"id: {index} - title: {note["title"]}")
 
     def list_note_details(self, note: dict):
-        print(f"""id: {note["id"]}
+        print(
+            f"""id: {note["id"]}
 title: {note["title"]}
 content: {note["content"]}
 timestamp: {note["timestamp"]}"""
@@ -57,10 +65,22 @@ timestamp: {note["timestamp"]}"""
             self.list_note_details(note)
 
     def redact_note(self):
-        pass
+        id = int(input("Введите id для редактирования заметки: "))
+        if id not in self.get_notes().keys():
+            print(f"Запись с id - {id} не найдена")
+            return
+        
+        self.update_note(id)
+        print(f"Запись с id - {id} изменена")
 
     def delete_note(self):
-        pass
+        id = int(input("Введите id для удаления заметки: "))
+        if id not in self.get_notes().keys():
+            print(f"Запись с id - {id} не найдена")
+            return
+        
+        self.notes.pop(id)
+        print(f"Запись с id - {id} удалена")
 
     def import_csv(self):
         # get from the file
@@ -83,3 +103,8 @@ def test():
     note.list_notes()
     print("==============")
     note.list_notes_details()
+    print("==============")
+    note.delete_note()
+    print("==============")
+    note.list_notes()    
+    
