@@ -15,7 +15,7 @@ class Task:
         
         self.run()
 
-    def run(self, ):
+    def run(self):
         choice = 0
         while choice != 8:
             print(messages.task_start_message)

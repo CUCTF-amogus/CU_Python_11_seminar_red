@@ -13,7 +13,7 @@ class FinanceRecord:
         
         self.run()
 
-    def run(self, ):
+    def run(self):
         choice = 0
         while choice != 6:
             print(messages.task_start_message)

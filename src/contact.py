@@ -14,7 +14,7 @@ class Contact:
         
         self.run()
 
-    def run(self, ):
+    def run(self):
         choice = 0
         while choice != 7:
             print(messages.task_start_message)
