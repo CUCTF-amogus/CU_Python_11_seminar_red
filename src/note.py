@@ -1,7 +1,7 @@
 import messages
 
 from datetime import datetime
-
+from pprint import pprint
 
 class Note:
     def __init__(self):
@@ -37,8 +37,11 @@ class Note:
             "timestamp": timestamp,
         }
 
+    def get_notes(self):
+        return self.notes
+
     def list_notes(self):
-        pass
+        pprint(self.get_notes())
 
     def list_note_details(self):
         pass
