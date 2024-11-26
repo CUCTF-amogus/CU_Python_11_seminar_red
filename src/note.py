@@ -42,10 +42,19 @@ class Note:
         return self.notes
 
     def list_notes(self):
-        pprint(self.get_notes())
+        for index, note in self.get_notes().items():
+            print(f"id: {index} - title: {note["title"]}")
 
-    def list_note_details(self):
-        pass
+    def list_note_details(self, note: dict):
+        print(f"""id: {note["id"]}
+title: {note["title"]}
+content: {note["content"]}
+timestamp: {note["timestamp"]}"""
+        )
+
+    def list_notes_details(self):
+        for index, note in self.get_notes().items():
+            self.list_note_details(note)
 
     def redact_note(self):
         pass
@@ -72,3 +81,5 @@ def test():
     print(note.get_notes())
     print("==============")
     note.list_notes()
+    print("==============")
+    note.list_notes_details()
