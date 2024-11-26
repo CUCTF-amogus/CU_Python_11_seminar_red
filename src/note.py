@@ -24,14 +24,15 @@ class Note:
             print(messages.task_start_message)
             choice = input(messages.choose_message)
             func = self.func_choice[choice]
+            func()
 
     def create_note(self):
         id = int(input("Введите id новой заметки: "))
         if id in self.get_notes().keys():
             print(f"Запись с id - {id} уже существует")
             return
-        
-        self.update_note(id, )
+
+        self.update_note(id)
 
     def get_notes(self):
         return self.notes
@@ -69,7 +70,7 @@ timestamp: {note["timestamp"]}"""
         if id not in self.get_notes().keys():
             print(f"Запись с id - {id} не найдена")
             return
-        
+
         self.update_note(id)
         print(f"Запись с id - {id} изменена")
 
@@ -78,7 +79,7 @@ timestamp: {note["timestamp"]}"""
         if id not in self.get_notes().keys():
             print(f"Запись с id - {id} не найдена")
             return
-        
+
         self.notes.pop(id)
         print(f"Запись с id - {id} удалена")
 
@@ -106,5 +107,4 @@ def test():
     print("==============")
     note.delete_note()
     print("==============")
-    note.list_notes()    
-    
+    note.list_notes()
