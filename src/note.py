@@ -1,5 +1,6 @@
 from config import messages
 
+import csv
 from datetime import datetime
 from pprint import pprint
 
@@ -16,6 +17,7 @@ class Note:
             7: self.export_csv,
         }
 
+        self.datafile_path = "data/note_data.csv"
         self.notes = {}
 
     def run(self):
@@ -84,27 +86,62 @@ timestamp: {note["timestamp"]}"""
         print(f"Запись с id - {id} удалена")
 
     def import_csv(self):
-        # get from the file
-        pass
+        # get data from the file
+
+        with open(self.datafile_path, mode ='r') as file:
+            csv_file = csv.reader(file)
+            next(csv_file)
+
+            for line in csv_file:
+                id, title, content, timestamp = line
+                timestamp = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
+                self.notes[id] = {
+                    "id": id,
+                    "title": title,
+                    "content": content,
+                    "timestamp": timestamp,
+                }
+
+        print(f"Данные успешно выгружены из файла {self.datafile_path}")
 
     def export_csv(self):
-        # load to the file
-        pass
+        # load data to the file
+        fields = ["id", "title", "content", "timestamp"]
+
+        notes_list = []
+        for note in self.get_notes().values():
+            note_list = list(note.values())
+            note_list[-1] = str(note_list[-1])[:19]
+            notes_list.append(note_list)
+        print(notes_list)
+        
+        with open(self.datafile_path, 'w') as file:
+            writer = csv.writer(file)
+            writer.writerow(fields)
+            writer.writerows(notes_list)
+        
+        print(f"Данные успешно загружены в файл {self.datafile_path}")
 
 
 def test():
     note = Note()
-
-    note.create_note()
-    # 123
-    # amogus
-    # sussus
-    print(note.get_notes())
     print("==============")
     note.list_notes()
+    print("==============")
+
+    note.import_csv()
+
+    print("==============")
+    note.list_notes()
+    print("==============")
+
+    note.create_note()
+    print("==============")
+    note.list_notes()
+    print("==============")
+
+    note.export_csv()
+
     print("==============")
     note.list_notes_details()
     print("==============")
-    note.delete_note()
-    print("==============")
-    note.list_notes()
