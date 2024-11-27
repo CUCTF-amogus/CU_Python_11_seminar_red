@@ -29,6 +29,6 @@ def main():
 
 if __name__ == "__main__":
     # main()
-    from src.task import test
+    from src.contact import test
 
     test()
