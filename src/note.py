@@ -22,9 +22,10 @@ class Note:
 
     def run(self):
         choice = 0
-        while choice != 8:
+        while True:
             print(messages.task_start_message)
-            choice = input(messages.choose_message)
+            choice = int(input(messages.choose_message))
+            if choice == 8: return
             func = self.func_choice[choice]
             func()
 
