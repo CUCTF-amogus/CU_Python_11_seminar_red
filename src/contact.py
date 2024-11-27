@@ -20,6 +20,7 @@ class Contact:
             print(messages.task_start_message)
             choice = input(messages.choose_message)
             func = self.func_choice[choice]
+            func()
     
     def create_contact():
         pass

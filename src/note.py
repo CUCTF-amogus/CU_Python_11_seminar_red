@@ -25,7 +25,8 @@ class Note:
         while True:
             print(messages.task_start_message)
             choice = int(input(messages.choose_message))
-            if choice == 8: return
+            if choice == 8:
+                return
             func = self.func_choice[choice]
             func()
 
@@ -89,7 +90,7 @@ timestamp: {note["timestamp"]}"""
     def import_csv(self):
         # get data from the file
 
-        with open(self.datafile_path, mode ='r') as file:
+        with open(self.datafile_path, mode="r") as file:
             csv_file = csv.reader(file)
             next(csv_file)
 
@@ -115,12 +116,12 @@ timestamp: {note["timestamp"]}"""
             note_list[-1] = str(note_list[-1])[:19]
             notes_list.append(note_list)
         print(notes_list)
-        
-        with open(self.datafile_path, 'w') as file:
+
+        with open(self.datafile_path, "w") as file:
             writer = csv.writer(file)
             writer.writerow(fields)
             writer.writerows(notes_list)
-        
+
         print(f"Данные успешно загружены в файл {self.datafile_path}")
 
 

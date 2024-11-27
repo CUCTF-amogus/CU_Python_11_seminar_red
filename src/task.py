@@ -107,7 +107,9 @@ due_date: {task["due_date"]}"""
             json_object = json.load(file)
 
             for index, value in json_object.items():
-                json_object[index]["due_date"] = datetime.strptime(value["due_date"], "%Y-%m-%d").date()
+                json_object[index]["due_date"] = datetime.strptime(
+                    value["due_date"], "%Y-%m-%d"
+                ).date()
             self.tasks = json_object
 
         print(f"Данные успешно выгружены из файла {self.datafile_path}")
