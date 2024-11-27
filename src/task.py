@@ -18,14 +18,6 @@ class Task:
 
         self.datafile_path = "data/tasks_data.json"
         self.tasks = {}
-        # self.tasks[123] = {
-        #     "id": 123,
-        #     "title": "amogus",
-        #     "description": "sus",
-        #     "done": False,
-        #     "priority": "high",
-        #     "due_date": datetime.strptime("12-12-2024", '%d-%m-%Y').date(),
-        # }
 
     def run(self):
         choice = 0
