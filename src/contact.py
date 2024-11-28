@@ -10,8 +10,8 @@ class Contact:
             2: self.find_contact,
             3: self.redact_contact,
             4: self.delete_contact,
-            5: self.import_csv,
-            6: self.export_csv,
+            5: self.import_json,
+            6: self.export_json,
         }
 
         self.datafile_path = "data/contacts_data.json"
@@ -87,14 +87,14 @@ email: {contact["email"]}"""
         self.contacts.pop(id)
         print(f"Контакт с id - {id} успешно удален")
 
-    def import_csv(self):
+    def import_json(self):
         # get data from the file
         with open(self.datafile_path, "r") as file:
             self.contacts = dict(json.load(file))
 
         print(f"Данные успешно выгружены из файла {self.datafile_path}")
 
-    def export_csv(self):
+    def export_json(self):
         # load data to the file
         with open(self.datafile_path, "w") as file:
             json.dump(self.get_contacts(), file, indent=4, default=str)
@@ -109,7 +109,7 @@ def test():
     contact.list_contacts()
     print("==============")
 
-    contact.import_csv()
+    contact.import_json()
 
     print("==============")
     contact.list_contacts()
@@ -121,4 +121,4 @@ def test():
     contact.list_contacts()
     print("==============")
 
-    contact.export_csv()
+    contact.export_json()

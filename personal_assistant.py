@@ -5,16 +5,16 @@ from src import *
 def main():
     note = Note()
     task = Task()
-    # contact = Contact()
-    # finance_record = FinanceRecord()
-    # calculator = Calculator()
+    contact = Contact()
+    finance_record = FinanceRecord()
+    calculator = Calculator()
 
     func_choice = {
         1: note.run,
         2: task.run,
-        # 3: contact.run,
-        # 4: finance_record.run,
-        # 5: calculator.run,
+        3: contact.run,
+        4: finance_record.run,
+        5: calculator.run,
     }
 
     while True:
@@ -28,7 +28,7 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-    from src.contact import test
+    main()
+    # from src.calculator import test
 
-    test()
+    # test()

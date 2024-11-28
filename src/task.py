@@ -12,8 +12,8 @@ class Task:
             3: self.mark_done,
             4: self.redact_task,
             5: self.delete_task,
-            6: self.export_csv,
-            7: self.import_csv,
+            6: self.export_json,
+            7: self.import_json,
         }
 
         self.datafile_path = "data/tasks_data.json"
@@ -89,7 +89,7 @@ due_date: {task["due_date"]}"""
             print(f"Таск с id - {id} не найден")
             return
 
-        self.update_note(id)
+        self.update_task(id)
         print(f"Таск с id - {id} успешно изменен")
 
     def delete_task(self):
@@ -101,7 +101,7 @@ due_date: {task["due_date"]}"""
         self.tasks.pop(id)
         print(f"Таск с id - {id} успешно удален")
 
-    def import_csv(self):
+    def import_json(self):
         # get data from the file
         with open(self.datafile_path, "r") as file:
             json_object = json.load(file)
@@ -114,7 +114,7 @@ due_date: {task["due_date"]}"""
 
         print(f"Данные успешно выгружены из файла {self.datafile_path}")
 
-    def export_csv(self):
+    def export_json(self):
         # load data to the file
         with open(self.datafile_path, "w") as file:
             json.dump(self.get_tasks(), file, indent=4, default=str)
@@ -129,7 +129,7 @@ def test():
     task.list_tasks()
     print("==============")
 
-    task.import_csv()
+    task.import_json()
 
     print("==============")
     task.list_tasks()
@@ -141,4 +141,4 @@ def test():
     task.list_tasks()
     print("==============")
 
-    task.export_csv()
+    task.export_json()
